@@ -5,7 +5,7 @@
 ```
 $ git clone https://github.com/erntorii/ECS-Rails6.git
 $ cd ECS-Rails6
-$ docker-compose run --rm app rails new . --force --database=mysql
+$ docker-compose run --rm app rails new . --force --database=mysql --skip-bundle
 ```
 
 ## puma.rbの編集
