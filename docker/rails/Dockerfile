@@ -10,5 +10,3 @@ COPY Gemfile.lock .
 RUN bundle install -j4
 
 COPY . /app
-
-RUN mkdir -p tmp/sockets
