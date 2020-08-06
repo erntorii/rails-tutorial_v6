@@ -39,6 +39,11 @@ default: &default
   host: db #編集
 ```
 
+## イメージのビルドと起動
+```
+$ docker-compose up -d --build
+```
+
 ## DBの作成
 ```
 $ docker-compose run --rm app rails db:create
