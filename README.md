@@ -16,9 +16,9 @@ services:
     # 省略...
     volumes:
       - .:/app
-      - bundle:/usr/local/bundle
       - sockets:/app/tmp/sockets
       - public-data:/app/public #コメントアウトを外す
+      - bundle:/usr/local/bundle #コメントアウトを外す
     # 省略...
   web:
     # 省略...
@@ -27,9 +27,9 @@ services:
       - public-data:/app/public #コメントアウトを外す
     # 省略...
 volumes:
-  bundle:
   sockets:
   public-data: #コメントアウトを外す
+  bundle: #コメントアウトを外す
   db-data:
 ```
 
