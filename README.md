@@ -8,6 +8,31 @@ $ cd ECS-Rails6
 $ docker-compose run --rm app rails new . --force --database=mysql --skip-bundle
 ```
 
+## docker-compose.ymlの編集
+```yml
+version: '3'
+services:
+  app:
+    # 省略...
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle
+      - sockets:/app/tmp/sockets
+      - public-data:/app/public #コメントアウトを外す
+    # 省略...
+  web:
+    # 省略...
+    volumes:
+      - sockets:/app/tmp/sockets
+      - public-data:/app/public #コメントアウトを外す
+    # 省略...
+volumes:
+  bundle:
+  sockets:
+  public-data: #コメントアウトを外す
+  db-data:
+```
+
 ## puma.rbの編集
 ```
 $ vi config/puma.rb
@@ -17,11 +42,6 @@ $ vi config/puma.rb
 # 最終行に追加
 app_root = File.expand_path("../..", __FILE__)
 bind "unix://#{app_root}/tmp/sockets/puma.sock"
-```
-
-puma.sockを配置するディレクトリを作成
-```
-$ mkdir -p tmp/sockets
 ```
 
 ## database.ymlの編集

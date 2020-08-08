@@ -9,8 +9,9 @@ services:
       - 3000:3000
     volumes:
       - .:/app
-      - public-data:/app/public
-      - tmp-data:/app/tmp
+      - bundle:/usr/local/bundle
+      - sockets:/app/tmp/sockets
+      # - public-data:/app/public
     depends_on:
       - db
     tty: true
@@ -27,11 +28,12 @@ services:
     ports:
       - 80:80
     volumes:
-      - public-data:/app/public
-      - tmp-data:/app/tmp
+      - sockets:/app/tmp/sockets
+      # - public-data:/app/public
     depends_on:
       - app
 volumes:
-  public-data:
-  tmp-data:
+  bundle:
+  sockets:
+  # public-data:
   db-data:
