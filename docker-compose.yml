@@ -23,8 +23,7 @@ services:
       MYSQL_ROOT_PASSWORD: password
   web:
     build:
-      context: .
-      dockerfile: ./docker/nginx/Dockerfile
+      context: docker/nginx
     ports:
       - 80:80
     volumes:
