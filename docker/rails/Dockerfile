@@ -12,3 +12,5 @@ COPY Gemfile.lock .
 RUN bundle install -j4
 
 COPY . /app
+
+# RUN bundle exec rails assets:precompile

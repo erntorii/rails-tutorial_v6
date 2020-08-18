@@ -68,3 +68,28 @@ $ docker-compose up -d --build
 ```
 $ docker-compose run --rm app rails db:create
 ```
+
+# 本番環境へのデプロイ時
+
+## rails/Dockerfileの編集
+```yml
+# 最終行
+RUN bundle exec rails assets:precompile #コメントアウトを外す
+```
+
+## nginx.confの編集
+```conf
+server {
+  listen 80;
+  server_name xx.xx.xx.xx; #デプロイ時にIPを変更する
+```
+
+## database.ymlの編集
+```yml
+production:
+  <<: *default
+  database: <%= ENV['DB_DATABASE'] %>
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+```
