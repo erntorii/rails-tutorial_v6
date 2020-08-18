@@ -93,3 +93,6 @@ production:
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
 ```
+
+## イメージのビルドとpush
+`docker-compose build`後、ECRリポジトリにpushする
