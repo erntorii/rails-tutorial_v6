@@ -10,8 +10,8 @@ services:
     volumes:
       - .:/app
       - sockets:/app/tmp/sockets
-      # - public-data:/app/public
-      # - bundle:/usr/local/bundle
+      - public-data:/app/public
+      - bundle:/usr/local/bundle
     depends_on:
       - db
     tty: true
@@ -28,11 +28,11 @@ services:
       - 80:80
     volumes:
       - sockets:/app/tmp/sockets
-      # - public-data:/app/public
+      - public-data:/app/public
     depends_on:
       - app
 volumes:
   sockets:
-  # public-data:
-  # bundle:
+  public-data:
+  bundle:
   db-data:
